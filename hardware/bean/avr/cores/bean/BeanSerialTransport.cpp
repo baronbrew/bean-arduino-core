@@ -577,6 +577,13 @@ int BeanSerialTransport::BTGetConfig(BT_RADIOCONFIG_T *config) {
                            &size);
 }
 
+void BeanSerialTransport::BTSetConfig(BT_RADIOCONFIG_T radioConfig, bool save)
+{
+  uint16_t msgId = ( save ? MSG_ID_BT_SET_CONFIG: MSG_ID_BT_SET_CONFIG_NOSAVE );
+  write_message(msgId, (const uint8_t*)&radioConfig, sizeof(BT_RADIOCONFIG_T));
+}
+
+
 void BeanSerialTransport::BTBeaconModeEnable(bool beaconEnable) {
   BT_RADIOCONFIG_T radioConfig;
   size_t size = sizeof(BT_RADIOCONFIG_T);

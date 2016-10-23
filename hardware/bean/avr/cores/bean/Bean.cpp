@@ -660,6 +660,17 @@ void BeanClass::setBeaconParameters(uint16_t uuid, uint16_t major_id,
   Serial.BTSetBeaconParams(uuid, major_id, minor_id);
 }
 
+int BeanClass::getRadioConfig(BT_RADIOCONFIG_T *config)
+{
+  return Serial.BTGetConfig(config);
+}
+
+void BeanClass::setRadioConfig(BT_RADIOCONFIG_T config, bool save)
+{
+  Serial.BTSetConfig(config, save);
+}
+
+
 void BeanClass::setBeaconEnable(bool beaconEnable) {
   Serial.BTBeaconModeEnable(beaconEnable);
 }

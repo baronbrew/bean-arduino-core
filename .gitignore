@@ -6,3 +6,4 @@ docs/build/
 .publish/
 tmp/
 *.tar.gz
+.vscode

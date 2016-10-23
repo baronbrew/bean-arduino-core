@@ -52,7 +52,6 @@ class BeanSerialTransport : public HardwareSerial {
   void BTSetTxPower(const BT_TXPOWER_DB_T &power);
   void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
   int BTGetScratchChar(uint8_t scratchNum, ScratchData *scratchData);
-  int BTGetConfig(BT_RADIOCONFIG_T *config);
   int BTGetStates(BT_STATES_T *btStates);
   void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid);
   void BTBeaconModeEnable(bool beaconEnable);
@@ -108,6 +107,9 @@ class BeanSerialTransport : public HardwareSerial {
   bool m_enableSave = true;
 
  public:
+  int  BTGetConfig(BT_RADIOCONFIG_T *config);
+  void  BTSetConfig(BT_RADIOCONFIG_T config, bool save);
+
   // To work on bean, the serial must be initialized
   // at 57600 with standard settings, and cannot be disabled
   // or all control messaging will break.  We've overidden begin() and end()
